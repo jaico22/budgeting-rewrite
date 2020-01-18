@@ -46,3 +46,14 @@ resource "aws_subnet" "api_subnet" {
   }
 }
 
+#=================================================
+#                  Gateways
+#=================================================
+
+resource "aws_internet_gateway" "gw" {
+    vpc_id = aws_vpc.main.id
+    tags = {
+        Name = "${var.application_name}-internetgateway-${var.environment}"
+    }
+} 
+
